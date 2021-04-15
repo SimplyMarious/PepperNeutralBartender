@@ -1,8 +1,5 @@
 import qi
-from naoqi import ALProxy
-
-
-
+import face_detection
 
 
 class Starter:
@@ -10,10 +7,12 @@ class Starter:
         self.session = qi.Session()
         self.pepperIP = "localhost"
         self.pepperPort = 9559
-        if self.connectToPepper():
-            self.standPepper()
+        if self.connect_to_pepper():
+            self.stand_pepper()
+            self.set_LED_eyes("white")
+            face_detection.FaceDetection(self.session)
 
-    def connectToPepper(self):
+    def connect_to_pepper(self):
         try:
             self.session.connect("tcp://{}:{}".format(self.pepperIP, self.pepperPort))
             print("Connected to {}:{}".format(self.pepperIP, self.pepperPort))
@@ -23,10 +22,14 @@ class Starter:
                    " Run with -h option for help.\n".format(self.pepperIP, self.pepperPort))
             return False
 
-    def standPepper(self):
-        ALRobotPosture = self.session.service("ALRobotPosture")
-        ALRobotPosture.goToPosture("Stand", 0.8)
+    def stand_pepper(self):
+        self.ALRobotPosture = self.session.service("ALRobotPosture")
+        self.ALRobotPosture.goToPosture("Stand", 0.8)
+
+    def set_LED_eyes(self, colour):
+        self.ALLeds = self.session.service("ALLeds")
+        self.ALLeds.fadeRGB("FaceLeds", colour, 1)
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     starter = Starter()
