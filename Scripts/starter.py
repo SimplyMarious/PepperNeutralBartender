@@ -1,5 +1,5 @@
 import qi
-import face_detection
+import face_detection, dialog_controller
 
 
 class Starter:
@@ -10,7 +10,8 @@ class Starter:
         if self.connect_to_pepper():
             self.stand_pepper()
             self.set_LED_eyes("white")
-            face_detection.FaceDetection(self.session)
+            self.dialog_controller = dialog_controller.DialogController(self.session)
+            face_detection.FaceDetection(self.session, self.dialog_controller)
 
     def connect_to_pepper(self):
         try:
