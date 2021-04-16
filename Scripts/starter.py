@@ -1,5 +1,5 @@
 import qi
-import face_detection, dialog_controller
+import face_detection, dialog_controller, tablet_controller
 
 
 class Starter:
@@ -34,3 +34,4 @@ class Starter:
 
 if __name__ == "__main__":
     starter = Starter()
+    raw_input("Press Enter to exit")

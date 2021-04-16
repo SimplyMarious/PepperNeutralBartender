@@ -1,6 +1,3 @@
-import time
-
-
 class FaceDetection:
     def __init__(self, session, dialog_controller):
         self.dialog_controller = dialog_controller

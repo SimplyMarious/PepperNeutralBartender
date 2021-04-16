@@ -1,0 +1,13 @@
+topic: ~dialogoNeutrale2()
+language: iti
+
+# Defining extra concepts out of words or group of words
+#concept:(hello) [hello hi hey "good morning" greetings]
+
+# Catching inputs and triggering outputs
+#u:(e:start) $onStopped=1
+
+# Replying to speech
+#u:(~hello) ~hello
+u: (e:start) \pau=1000\ \vct=50\ \rspd=80\ cosa ne pensi a riguardo?
+    u1: (*) ^mode(disabled) \vct=50\ \rspd=80\ Ecco che arriva il tuo drink! \pau=1500\ Io sono un ròbot bar man super efficiente, \pau=500\ \vct=50\ \rspd=80\ sono in grado di preparare dieci drink al minuto. \pau=1500\ Visto? \pau=500\ il drink lo trovi sul tavolo. \pau=3000\ spero ti sia piaciuto. \pau=2000\ mi lasci una valutazione della tua esperienza, da 1 a 5, sulla lavagna dietro di te? \pau=10000\ \vct=50\ \rspd=80\ Stiamo cercando delle idee per nuovi drink \pau=500\ se vuoi puoi scrivere sulla lavagna la tua proposta \pau=20000\ Alla prossima! $stop=1
